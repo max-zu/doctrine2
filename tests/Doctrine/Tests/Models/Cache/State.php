@@ -22,20 +22,20 @@ class State
     protected $id;
 
     /**
-     * @ORM\Column(unique=true)
+     * @ORM\Column()
      */
     protected $name;
 
     /**
      * @ORM\Cache
-     * @ORM\ManyToOne(targetEntity=Country::class)
+     * @ORM\ManyToOne(targetEntity=Country::class, cascade={"persist", "refresh", "remove"})
      * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
      */
     protected $country;
 
     /**
      * @ORM\Cache("NONSTRICT_READ_WRITE")
-     * @ORM\OneToMany(targetEntity=City::class, mappedBy="state")
+     * @ORM\OneToMany(targetEntity=City::class, mappedBy="state", cascade={"all"})
      */
     protected $cities;
 

@@ -28,7 +28,7 @@ class City
 
     /**
      * @ORM\Cache
-     * @ORM\ManyToOne(targetEntity=State::class, inversedBy="cities")
+     * @ORM\ManyToOne(targetEntity=State::class, inversedBy="cities", cascade={"persist", "refresh", "remove"})
      * @ORM\JoinColumn(name="state_id", referencedColumnName="id")
      */
     protected $state;
